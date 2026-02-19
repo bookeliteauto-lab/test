@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite Detail | Premium Interior Car Care</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="img.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #00aaff;
+            --secondary-color: #0a0e14;
+            --accent-color: #0077cc;
+            --text-color: #e0e0e0;
+            --light-bg: #151b23;
+            --white: #ffffff;
+            --card-bg: #1c242f;
+            --success: #28a745;
+            --error: #dc3545;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--secondary-color);
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(10, 14, 20, 0.95);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 170, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            height: 50px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links li a {
+            color: var(--white);
+            text-decoration: none;
+            margin-left: 30px;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links li a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Buttons */
+        .btn-primary, .btn-secondary, .btn-select {
+            display: inline-block;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 170, 255, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+            margin-left: 10px;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 80vh;
+            background: linear-gradient(rgba(10, 14, 20, 0.8), rgba(10, 14, 20, 0.8)), url('https://images.unsplash.com/photo-1605152276897-4f618f831968?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            padding-top: 80px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 100px 0;
+            background: var(--light-bg);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 60px;
+            color: var(--white);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .price-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s;
+            display: flex; flex-direction: column;
+        }
+
+        .price-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-color);
+        }
+
+        .price-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 10px;
+        }
+
+        .price {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            font-family: 'Oswald', sans-serif;
+        }
+
+        .car-models {
+            font-size: 0.8rem;
+            color: #888;
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+
+        .btn-select {
+            width: 100%;
+            background: var(--primary-color);
+            color: white;
+            margin-top: 15px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary-color);
+            padding: 80px 0 40px;
+            border-top: 1px solid rgba(0, 170, 255, 0.2);
+            color: var(--white);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-logo {
+            height: 60px;
+            margin-bottom: 20px;
+        }
+
+        .footer-contact a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-contact a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-socials a {
+            color: var(--white);
+            font-size: 1.8rem;
+            margin-right: 15px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* ----- BOOKING SCREEN OVERLAY ----- */
+        #booking-screen {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-color: var(--secondary-color);
+            z-index: 2000;
+            display: none;
+            flex-direction: column;
+            overflow-y: auto;
+            padding-bottom: 50px;
+        }
+
+        #booking-screen.active { display: flex; }
+
+        .booking-header {
+            background: rgba(10, 14, 20, 0.95);
+            padding: 20px;
+            border-bottom: 1px solid rgba(0, 170, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .booking-container {
+            max-width: 800px;
+            width: 95%;
+            margin: 40px auto;
+            color: var(--white);
+            position: relative;
+        }
+
+        .booking-top-info {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .top-price-display {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2rem;
+            color: var(--primary-color);
+            background: rgba(0, 170, 255, 0.1);
+            display: inline-block;
+            padding: 10px 25px;
+            border-radius: 8px;
+            border: 2px solid rgba(0, 170, 255, 0.3);
+        }
+
+        #selected-time-display {
+            margin-top: 15px;
+            font-size: 1.1rem;
+            color: var(--white);
+            font-weight: bold;
+            min-height: 24px;
+        }
+
+        /* Calendar & Slots */
+        .calendar-container {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+            text-align: center;
+        }
+
+        .calendar-cell {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            cursor: pointer;
+            background: rgba(255,255,255,0.03);
+        }
+
+        .calendar-cell.active { background: var(--primary-color); }
+        .calendar-cell.disabled { opacity: 0.1; cursor: not-allowed; }
+
+        .slots-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+            gap: 12px;
+            margin: 20px 0;
+            padding: 10px;
+            border-radius: 8px;
+            transition: border-color 0.3s;
+        }
+
+        .time-slot {
+            background: var(--card-bg);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.2s;
+        }
+
+        .time-slot.selected { background: var(--primary-color); border-color: var(--primary-color); color: white; }
+        .time-slot.custom-btn { border: 1px dashed var(--primary-color); color: var(--primary-color); }
+
+        #custom-time-display-confirmed {
+            text-align: center;
+            margin-top: 10px;
+            color: var(--primary-color);
+            font-weight: bold;
+            font-size: 1.1rem;
+            display: none;
+        }
+
+        /* Custom Time Picker UI */
+        #custom-time-picker {
+            display: none;
+            background: var(--card-bg);
+            border: 2px solid var(--primary-color);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 15px;
+            position: relative;
+            animation: slideDown 0.3s ease-out;
+        }
+
+        .tp-close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #888;
+        }
+        .tp-close:hover { color: white; }
+
+        @keyframes slideDown { from { opacity:0; transform: translateY(-10px); } to { opacity:1; transform: translateY(0); } }
+
+        .tp-grid {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            font-size: 1.5rem;
+        }
+
+        .tp-col { display: flex; flex-direction: column; align-items: center; }
+        .tp-btn {
+            background: rgba(255,255,255,0.1);
+            border: none;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+        .tp-btn:hover { background: var(--primary-color); }
+        .tp-val { width: 50px; text-align: center; font-weight: bold; padding: 10px 0; }
+
+        .tp-confirm {
+            margin-top: 15px;
+            width: 100%;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        /* Forms */
+        .booking-form {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            margin-top: 30px;
+        }
+
+        .form-row { display: flex; gap: 15px; margin-bottom: 15px; }
+        .form-group { flex: 1; display: flex; flex-direction: column; }
+        .form-group label { font-size: 0.75rem; color: var(--primary-color); margin-bottom: 5px; font-weight: bold; }
+        .booking-form input {
+            padding: 12px;
+            border-radius: 4px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: white;
+            transition: border-color 0.2s;
+        }
+        .booking-form input.invalid {
+            border-color: var(--error) !important;
+            box-shadow: 0 0 5px rgba(220, 53, 69, 0.3);
+        }
+
+        .error-border {
+            border: 1px solid var(--error) !important;
+            box-shadow: 0 0 10px rgba(220, 53, 69, 0.2);
+        }
+        .error-msg {
+            color: var(--error);
+            font-size: 0.85rem;
+            margin-top: 10px;
+            text-align: center;
+            display: none;
+            font-weight: bold;
+        }
+
+        /* Success Screen */
+        #success-screen {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-color: var(--secondary-color);
+            z-index: 3000;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .success-box {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 170, 255, 0.2);
+            max-width: 500px;
+            width: 100%;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+        }
+
+        .check-circle {
+            width: 80px;
+            height: 80px;
+            background: var(--success);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+            margin: 0 auto 25px;
+            box-shadow: 0 0 20px rgba(40, 167, 69, 0.4);
+        }
+
+        .summary-card {
+            background: rgba(255,255,255,0.03);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: left;
+            font-size: 0.95rem;
+        }
+
+        .summary-card p {
+            margin-bottom: 8px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding-bottom: 5px;
+        }
+
+        .summary-card strong {
+            color: var(--primary-color);
+        }
+
+        @media (max-width: 600px) {
+            .form-row { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="container">
+            <a href="#"><img src="img.png" alt="Elite Detailing" class="nav-logo"></a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#contact" class="btn-primary">Book Now</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div id="main-content">
+        <header id="home" class="hero">
+            <div class="container">
+                <h1>Elite Interior Detailing</h1>
+                <p>Specializing in deep interior restoration and preservation.</p>
+                <br>
+                <a href="#pricing" class="btn-primary" style="margin-top:20px;">View Pricing</a>
+            </div>
+        </header>
+
+        <section id="pricing" class="pricing">
+            <div class="container">
+                <h2 class="section-title">Interior Detail Pricing</h2>
+                <div class="pricing-grid">
+                    <div class="price-card">
+                        <div class="price-header"><span class="price">$80</span><h3>Compact / Small EV</h3></div>
+                        <p class="car-models">Leaf, Bolt, etc.</p>
+                        <ul style="list-style:none; margin-top:15px; font-size:0.9rem;">
+                            <li>• Full vacuum (Interior & Trunk)</li>
+                            <li>• Steam clean all surfaces</li>
+                            <li>• Interior glass polish</li>
+                        </ul>
+                        <button class="btn-select" onclick="openBooking('Compact / Small EV', 80)">Select</button>
+                    </div>
+                    <div class="price-card">
+                        <div class="price-header"><span class="price">$100</span><h3>Sedan</h3></div>
+                        <p class="car-models">Accord, Camry, Model S, etc.</p>
+                        <ul style="list-style:none; margin-top:15px; font-size:0.9rem;">
+                            <li>• Manual fabric agitation</li>
+                            <li>• Deep door jamb cleaning</li>
+                            <li>• UV dashboard dressing</li>
+                        </ul>
+                        <button class="btn-select" onclick="openBooking('Sedan', 100)">Select</button>
+                    </div>
+                    <div class="price-card">
+                        <div class="price-header"><span class="price">$110</span><h3>SUV / CUV</h3></div>
+                        <p class="car-models">CRV, RAV4, Model Y, etc.</p>
+                        <ul style="list-style:none; margin-top:15px; font-size:0.9rem;">
+                            <li>• Cargo area deep clean</li>
+                            <li>• Full steam purge of vents</li>
+                            <li>• Seat rails & crevices</li>
+                        </ul>
+                        <button class="btn-select" onclick="openBooking('SUV / CUV', 110)">Select</button>
+                    </div>
+                    <div class="price-card">
+                        <div class="price-header"><span class="price">$130</span><h3>Pickup Truck</h3></div>
+                        <p class="car-models">F150, Silverado, etc.</p>
+                        <ul style="list-style:none; margin-top:15px; font-size:0.9rem;">
+                            <li>• Deep stain removal (Floor)</li>
+                            <li>• Leather rejuvenation</li>
+                            <li>• Rear bench detailing</li>
+                        </ul>
+                        <button class="btn-select" onclick="openBooking('Pickup Truck', 130)">Select</button>
+                    </div>
+                    <div class="price-card">
+                        <div class="price-header"><span class="price">$160</span><h3>Van</h3></div>
+                        <p class="car-models">Sienna, Odyssey, etc.</p>
+                        <ul style="list-style:none; margin-top:15px; font-size:0.9rem;">
+                            <li>• All SUV features</li>
+                            <li>• All rows of seating deep cleaned</li>
+                            <li>• Extra large cabin restoration</li>
+                        </ul>
+                        <button class="btn-select" onclick="openBooking('Van', 160)">Select</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" style="padding: 80px 0; background: var(--card-bg);">
+            <div class="container" style="text-align: center;">
+                <h2 class="section-title">Contact Us</h2>
+                <div style="font-size: 1.2rem;">
+                    <p style="margin-bottom: 20px; color:var(--primary-color); font-family:'Oswald';">OUR SCHEDULE: MONDAY – FRIDAY 6:00 AM – 6:30 PM</p>
+                    <p style="margin-bottom: 15px;"><a href="tel:+13236018004" style="color:white; text-decoration:none;"><i class="fas fa-phone" style="color:var(--primary-color)"></i> +1 323-601-8004</a></p>
+                    <p><a href="mailto:bookeliteauto@gmail.com" style="color:white; text-decoration:none;"><i class="fas fa-envelope" style="color:var(--primary-color)"></i> bookeliteauto@gmail.com</a></p>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="container">
+                <div class="footer-grid">
+                    <div>
+                        <img src="img.png" alt="Elite Detailing" class="footer-logo">
+                        <p>Providing the highest standard of interior car care in the Los Angeles area. Mobile service brought directly to your doorstep.</p>
+                    </div>
+                    <div class="footer-contact">
+                        <h4>Contact Details</h4>
+                        <p><a href="tel:+13236018004"><i class="fas fa-phone" style="color:var(--primary-color)"></i> +1 323-601-8004</a></p>
+                        <p><a href="mailto:bookeliteauto@gmail.com"><i class="fas fa-envelope" style="color:var(--primary-color)"></i> bookeliteauto@gmail.com</a></p>
+                        <p><i class="fas fa-map-marker-alt" style="color:var(--primary-color)"></i> Los Angeles, CA</p>
+                    </div>
+                    <div>
+                        <h4>Follow Us</h4>
+                        <div class="footer-socials">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-tiktok"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2026 Elite Interior Detailing. All Rights Reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- BOOKING OVERLAY -->
+    <div id="booking-screen">
+        <div class="booking-header">
+            <button class="btn-secondary" onclick="closeBooking()">Back</button>
+            <h2 style="color:var(--primary-color)">Booking</h2>
+            <div style="width:40px"></div>
+        </div>
+
+        <div class="booking-container">
+            <div class="booking-top-info">
+                <div class="top-price-display" id="top-total-price">TOTAL: $0</div>
+                <div id="selected-time-display"></div>
+            </div>
+
+            <div class="calendar-container">
+                <div style="display:flex; justify-content:space-between; margin-bottom:15px; align-items:center;">
+                    <button class="btn-secondary" style="padding:5px 10px" onclick="changeMonth(-1)"><</button>
+                    <h4 id="cal-title">Month Year</h4>
+                    <button class="btn-secondary" style="padding:5px 10px" onclick="changeMonth(1)">></button>
+                </div>
+                <div class="calendar-grid" id="cal-grid"></div>
+                <div id="cal-error-msg" class="error-msg">Please select a date</div>
+            </div>
+
+            <div id="time-picker-area">
+                <h4 style="margin-bottom:10px;">Select Time</h4>
+                <div class="slots-container" id="slots-container"></div>
+                <div id="time-error-msg" class="error-msg">Please select a time</div>
+                
+                <div id="custom-time-display-confirmed">Selected Time: 08:00 AM</div>
+
+                <!-- Custom Time Detailed Picker -->
+                <div id="custom-time-picker">
+                    <span class="tp-close" onclick="closeCustomTime()">&times;</span>
+                    <div class="tp-grid">
+                        <div class="tp-col">
+                            <button class="tp-btn" onclick="updateTP('h', 1)">+</button>
+                            <div class="tp-val" id="tp-h">08</div>
+                            <button class="tp-btn" onclick="updateTP('h', -1)">-</button>
+                        </div>
+                        <div style="padding-bottom:10px">:</div>
+                        <div class="tp-col">
+                            <button class="tp-btn" onclick="updateTP('m', 15)">+</button>
+                            <div class="tp-val" id="tp-m">00</div>
+                            <button class="tp-btn" onclick="updateTP('m', -15)">-</button>
+                        </div>
+                        <div class="tp-col">
+                            <button class="tp-btn" onclick="updateTP('p', 1)">↑</button>
+                            <div class="tp-val" id="tp-p">AM</div>
+                            <button class="tp-btn" onclick="updateTP('p', -1)">↓</button>
+                        </div>
+                    </div>
+                    <button class="tp-confirm" onclick="confirmCustomTime()">Confirm Selection</button>
+                </div>
+            </div>
+
+            <div class="booking-form">
+                <h3 style="margin-bottom:20px; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:10px;">Customer Info</h3>
+                <form id="booking-form" novalidate>
+                    <div class="form-row">
+                        <div class="form-group"><label>First Name</label><input type="text" id="fname" required></div>
+                        <div class="form-group"><label>Last Name</label><input type="text" id="lname" required></div>
+                    </div>
+                    <div class="form-group" style="margin-bottom:15px;">
+                        <label>Phone</label>
+                        <input type="tel" id="phone" placeholder="(555) 555-5555" required>
+                    </div>
+                    <div class="form-group" style="margin-bottom:15px;"><label>Mobile Address</label><input type="text" id="addr" placeholder="Street, City, Zip" required></div>
+                    
+                    <div class="payment-info" style="margin-top:20px; font-size:0.9rem; color:#aaa;">
+                        <strong>Payment Due After Service:</strong> Cash, Zelle, Cash App, or Apple Pay.
+                    </div>
+
+                    <button type="submit" class="btn-primary" style="width:100%; margin-top:30px;">Complete Booking</button>
+                    
+                    <p style="text-align:center; margin-top:20px; color:#aaa; font-size:0.9rem;">
+                        Need help? Call <a href="tel:+13236018004" style="color:var(--primary-color); font-weight:bold; text-decoration:none;">+1 323-601-8004</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- SUCCESS SCREEN -->
+    <div id="success-screen">
+        <div class="success-box">
+            <div class="check-circle"><i class="fas fa-check"></i></div>
+            <h2 style="color:var(--white); margin-bottom:10px;">Booking Confirmed!</h2>
+            <p style="color:#aaa; font-size:0.95rem;">You have booked an appointment for Elite Mobile Interior Detailing.</p>
+            
+            <div class="summary-card" id="summary-card">
+                <!-- Summary content injected via JS -->
+            </div>
+
+            <p style="font-size:0.85rem; color:#888; margin-bottom:25px;">
+                You will receive a confirmation call shortly. Payment is due upon completion of the service.
+            </p>
+
+            <button class="btn-primary" onclick="goHome()" style="width:100%;">Go Home</button>
+        </div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-app.js";
+        import { getFirestore, collection, addDoc, query, where, getDocs } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-firestore.js";
+        import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "GOOGLE_API_KEY",
+            authDomain: "delete-detailing.firebaseapp.com",
+            projectId: "delete-detailing",
+            storageBucket: "delete-detailing.firebasestorage.app",
+            messagingSenderId: "413997865580",
+            appId: "1:413997865580:web:918f88708f808c3cf89649"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const auth = getAuth(app);
+        signInAnonymously(auth);
+
+        let currentViewDate = new Date();
+        let selectedDate = null;
+        let selectedTime = null;
+        let pkgName = "";
+        let pkgPrice = 0;
+
+        let tpH = 8;
+        let tpM = 0;
+        let tpP = 'AM';
+
+        // --- PHONE FORMATTER ---
+        const phoneInput = document.getElementById('phone');
+        phoneInput.addEventListener('input', (e) => {
+            let input = e.target.value.replace(/\D/g, '').substring(0, 10);
+            let size = input.length;
+            if (size === 0) {
+                e.target.value = '';
+            } else if (size < 4) {
+                e.target.value = '(' + input;
+            } else if (size < 7) {
+                e.target.value = '(' + input.substring(0, 3) + ') ' + input.substring(3);
+            } else {
+                e.target.value = '(' + input.substring(0, 3) + ') ' + input.substring(3, 6) + '-' + input.substring(6);
+            }
+            phoneInput.classList.remove('invalid');
+        });
+
+        // Validation helpers to remove red borders on interaction
+        document.querySelectorAll('.booking-form input').forEach(input => {
+            if (input.id !== 'phone') {
+                input.addEventListener('input', () => input.classList.remove('invalid'));
+            }
+        });
+
+        function updateSummaryDisplay() {
+            const display = document.getElementById('selected-time-display');
+            if(selectedDate && selectedTime) {
+                display.textContent = `Selected: ${selectedDate} @ ${selectedTime}`;
+            } else if (selectedDate) {
+                display.textContent = `Selected: ${selectedDate}`;
+            } else {
+                display.textContent = "";
+            }
+        }
+
+        window.updateTP = (type, dir) => {
+            if(type === 'h') {
+                tpH = (tpH + dir);
+                if(tpH > 12) tpH = 1;
+                if(tpH < 1) tpH = 12;
+            } else if(type === 'm') {
+                tpM = (tpM + dir);
+                if(tpM >= 60) tpM = 0;
+                if(tpM < 0) tpM = 45;
+            } else if(type === 'p') {
+                tpP = tpP === 'AM' ? 'PM' : 'AM';
+            }
+            document.getElementById('tp-h').textContent = tpH.toString().padStart(2, '0');
+            document.getElementById('tp-m').textContent = tpM.toString().padStart(2, '0');
+            document.getElementById('tp-p').textContent = tpP;
+        };
+
+        window.closeCustomTime = () => {
+            document.getElementById('custom-time-picker').style.display = 'none';
+        }
+
+        window.confirmCustomTime = () => {
+            selectedTime = `${tpH.toString().padStart(2, '0')}:${tpM.toString().padStart(2, '0')} ${tpP}`;
+            document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
+            
+            const customBtn = document.getElementById('custom-time-btn');
+            customBtn.classList.add('selected');
+            customBtn.textContent = 'Custom Selected';
+            
+            // Clear error if set
+            document.getElementById('slots-container').style.borderColor = 'rgba(255,255,255,0.1)';
+            document.getElementById('time-error-msg').style.display = 'none';
+
+            updateSummaryDisplay();
+            closeCustomTime();
+        };
+
+        window.openBooking = (name, price) => {
+            pkgName = name;
+            pkgPrice = price;
+            document.getElementById('top-total-price').textContent = `TOTAL: $${price}`;
+            document.getElementById('main-content').style.display = 'none';
+            document.getElementById('booking-screen').classList.add('active');
+            window.scrollTo(0,0);
+            renderCalendar();
+        };
+
+        window.closeBooking = () => {
+            document.getElementById('main-content').style.display = 'block';
+            document.getElementById('booking-screen').classList.remove('active');
+            document.querySelectorAll('.booking-form input').forEach(i => i.classList.remove('invalid'));
+            clearErrors();
+        };
+
+        window.goHome = () => {
+            window.location.reload();
+        };
+
+        window.changeMonth = (dir) => {
+            currentViewDate.setMonth(currentViewDate.getMonth() + dir);
+            renderCalendar();
+        };
+
+        function clearErrors() {
+            document.querySelector('.calendar-container').classList.remove('error-border');
+            document.getElementById('cal-error-msg').style.display = 'none';
+            document.getElementById('slots-container').style.border = 'none';
+            document.getElementById('time-error-msg').style.display = 'none';
+        }
+
+        async function renderCalendar() {
+            const grid = document.getElementById('cal-grid');
+            const title = document.getElementById('cal-title');
+            grid.innerHTML = '';
+            
+            const year = currentViewDate.getFullYear();
+            const month = currentViewDate.getMonth();
+            const first = new Date(year, month, 1).getDay();
+            const days = new Date(year, month + 1, 0).getDate();
+            const today = new Date();
+            today.setHours(0,0,0,0);
+
+            title.textContent = new Intl.DateTimeFormat('en-US', { month: 'long', year: 'numeric' }).format(currentViewDate);
+
+            ['S','M','T','W','T','F','S'].forEach(d => {
+                grid.innerHTML += `<div style="font-size:0.7rem; color:var(--primary-color); padding:5px;">${d}</div>`;
+            });
+
+            for (let i = 0; i < first; i++) grid.innerHTML += '<div></div>';
+
+            for (let d = 1; d <= days; d++) {
+                const date = new Date(year, month, d);
+                const isPast = date < today;
+                const isWeekend = date.getDay() === 0 || date.getDay() === 6;
+                const dateStr = date.toISOString().split('T')[0];
+                
+                const cell = document.createElement('div');
+                cell.className = `calendar-cell ${isPast || isWeekend ? 'disabled' : ''}`;
+                cell.textContent = d;
+                if(!isPast && !isWeekend) {
+                    cell.onclick = () => {
+                        document.querySelectorAll('.calendar-cell').forEach(c => c.classList.remove('active'));
+                        cell.classList.add('active');
+                        selectedDate = dateStr;
+                        
+                        // Clear Date Error
+                        document.querySelector('.calendar-container').classList.remove('error-border');
+                        document.getElementById('cal-error-msg').style.display = 'none';
+
+                        updateSummaryDisplay();
+                        fetchSlots(dateStr);
+                    };
+                }
+                grid.appendChild(cell);
+            }
+        }
+
+        async function fetchSlots(dateStr) {
+            const container = document.getElementById('slots-container');
+            container.innerHTML = '<div style="grid-column: 1/-1; text-align:center;">Checking availability...</div>';
+            document.getElementById('custom-time-picker').style.display = 'none';
+            document.getElementById('custom-time-display-confirmed').style.display = 'none';
+
+            const q = query(collection(db, "appointments"), where("date", "==", dateStr));
+            const snap = await getDocs(q);
+            const taken = snap.docs.map(d => d.data().time);
+
+            container.innerHTML = '';
+            const defaults = ['6:00 AM', '7:00 AM', '9:00 AM', '11:00 AM', '1:00 PM', '3:00 PM', '5:00 PM', '6:30 PM'];
+            
+            defaults.forEach(t => {
+                const slot = document.createElement('div');
+                slot.className = `time-slot ${taken.includes(t) ? 'disabled' : ''}`;
+                slot.textContent = t;
+                if(!taken.includes(t)) {
+                    slot.onclick = () => {
+                        document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
+                        slot.classList.add('selected');
+                        selectedTime = t;
+                        
+                        // Clear Time Error
+                        document.getElementById('slots-container').style.border = 'none';
+                        document.getElementById('time-error-msg').style.display = 'none';
+
+                        document.getElementById('custom-time-btn').textContent = 'Custom Time';
+                        document.getElementById('custom-time-display-confirmed').style.display = 'none';
+                        updateSummaryDisplay();
+                    };
+                } else {
+                    slot.style.opacity = "0.3";
+                    slot.style.cursor = "not-allowed";
+                }
+                container.appendChild(slot);
+            });
+
+            const customBtn = document.createElement('div');
+            customBtn.className = 'time-slot custom-btn';
+            customBtn.id = 'custom-time-btn';
+            customBtn.textContent = 'Custom Time';
+            customBtn.onclick = () => {
+                document.getElementById('custom-time-picker').style.display = 'block';
+            };
+            container.appendChild(customBtn);
+        }
+
+        async function sendTelegramNotification(name, price, phone) {
+            const botToken = "7896596877:AAHRwwlucEsfGOvRQejQcEX-r6C1T5Woaow";
+            const chatId = "7488024607";
+            const message = `--- New Customer ---
+Name: ${name}
+Price: $${price}
+Phone: ${phone}
+-------------------`;
+            
+            const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`;
+            
+            try {
+                fetch(url).catch(e => console.error("Telegram fail", e));
+            } catch (err) {
+                console.error("Telegram error:", err);
+            }
+        }
+
+        document.getElementById('booking-form').onsubmit = (e) => {
+            e.preventDefault();
+            
+            // --- VALIDATION START ---
+            let hasError = false;
+
+            // 1. Validate Date
+            if(!selectedDate) {
+                document.querySelector('.calendar-container').classList.add('error-border');
+                document.getElementById('cal-error-msg').style.display = 'block';
+                document.querySelector('.calendar-container').scrollIntoView({behavior: 'smooth', block: 'center'});
+                hasError = true;
+            }
+
+            // 2. Validate Time
+            if(!selectedTime) {
+                const slots = document.getElementById('slots-container');
+                slots.style.border = '1px solid var(--error)';
+                document.getElementById('time-error-msg').style.display = 'block';
+                if(!hasError) slots.scrollIntoView({behavior: 'smooth', block: 'center'});
+                hasError = true;
+            }
+
+            // 3. Validate Inputs
+            const inputs = e.target.querySelectorAll('input[required]');
+            inputs.forEach(input => {
+                if(!input.value.trim()) {
+                    input.classList.add('invalid');
+                    hasError = true;
+                } else {
+                    input.classList.remove('invalid');
+                }
+            });
+
+            // 4. Validate Phone Length
+            const rawPhone = document.getElementById('phone').value;
+            const digits = rawPhone.replace(/\D/g, '');
+            if (digits.length < 10) {
+                document.getElementById('phone').classList.add('invalid');
+                hasError = true;
+            }
+
+            if(hasError) return;
+            // --- VALIDATION END ---
+
+            const btn = e.target.querySelector('button');
+            const fname = document.getElementById('fname').value;
+            const lname = document.getElementById('lname').value;
+            const phone = rawPhone;
+            const address = document.getElementById('addr').value;
+            const fullName = fname + ' ' + lname;
+
+            // --- OPTIMISTIC UI UPDATE ---
+            document.getElementById('booking-screen').classList.remove('active');
+            document.getElementById('success-screen').style.display = 'flex';
+            window.scrollTo(0,0);
+
+            const summaryCard = document.getElementById('summary-card');
+            summaryCard.innerHTML = `
+                <p><strong>Package:</strong> ${pkgName}</p>
+                <p><strong>Total:</strong> $${pkgPrice}</p>
+                <p><strong>Scheduled:</strong> ${selectedDate} at ${selectedTime}</p>
+                <p><strong>Location:</strong> ${address}</p>
+                <p><strong>Customer:</strong> ${fullName}</p>
+            `;
+
+            // Background Processes
+            const appointmentData = {
+                date: selectedDate, 
+                time: selectedTime,
+                name: fullName,
+                phone: phone,
+                address: address,
+                package: pkgName,
+                price: pkgPrice,
+                status: 'pending',
+                createdAt: new Date().toISOString()
+            };
+
+            addDoc(collection(db, "appointments"), appointmentData)
+                .then(() => console.log("Booking saved"))
+                .catch(err => console.error("DB Save Failed", err));
+
+            sendTelegramNotification(fullName, pkgPrice, phone);
+        };
+    </script>
+</body>
+</html>
